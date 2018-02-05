@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2017 The Dagger Authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package dagger.object.inject;
 
 import static com.google.auto.common.MoreElements.isAnnotationPresent;
@@ -9,13 +25,10 @@ import static javax.lang.model.util.ElementFilter.typesIn;
 import com.google.auto.common.MoreTypes;
 import com.google.common.collect.ImmutableMap;
 import dagger.MapKey;
-
 import java.lang.annotation.Annotation;
 import java.util.List;
-import java.util.function.Predicate;
 import java.util.stream.Stream;
 import javax.lang.model.element.ExecutableElement;
-import javax.lang.model.element.PackageElement;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeMirror;
 import javax.lang.model.type.WildcardType;
@@ -33,7 +46,8 @@ final class AndroidMapKeys {
             Elements elements) {
         return ImmutableMap.copyOf(
                 Stream.of(
-                        elements.getPackageElement("dagger.object"))
+                        elements.getPackageElement("dagger.android"),
+                        elements.getPackageElement("dagger.android.support"))
                         .filter(packageElement -> packageElement != null)
                         .flatMap(packageElement -> typesIn(packageElement.getEnclosedElements()).stream())
                         .filter(type -> isAnnotationPresent(type, MapKey.class))
@@ -53,7 +67,7 @@ final class AndroidMapKeys {
         }
     }
 
-    public static TypeMirror mapKeyValue(Class<? extends Annotation> annotation, Elements elements) {
+    private static TypeMirror mapKeyValue(Class<? extends Annotation> annotation, Elements elements) {
         List<ExecutableElement> mapKeyMethods =
                 methodsIn(elements.getTypeElement(annotation.getCanonicalName()).getEnclosedElements());
         TypeMirror returnType = getOnlyElement(mapKeyMethods).getReturnType();

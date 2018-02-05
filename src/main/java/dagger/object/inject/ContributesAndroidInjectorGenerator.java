@@ -1,5 +1,20 @@
-package dagger.object.inject;
+/*
+ * Copyright (C) 2017 The Dagger Authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
+package dagger.object.inject;
 import static com.google.common.base.CaseFormat.LOWER_CAMEL;
 import static com.google.common.base.CaseFormat.UPPER_CAMEL;
 import static com.squareup.javapoet.MethodSpec.constructorBuilder;
@@ -30,21 +45,16 @@ import dagger.Module;
 import dagger.Subcomponent;
 import dagger.Subcomponent.Builder;
 import dagger.android.AndroidInjector;
+import dagger.android.ContributesAndroidInjector;
 import dagger.multibindings.IntoMap;
-import dagger.object.InjectAble;
-import dagger.object.ContributesObjectInjector;
-
 import java.io.IOException;
 import java.lang.annotation.Annotation;
-import java.util.List;
 import java.util.Set;
 import javax.annotation.processing.Filer;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ExecutableElement;
 
-/**
- * Generates the implementation specified in {@link ContributesObjectInjector}.
- */
+/** Generates the implementation specified in {@link ContributesAndroidInjector}. */
 final class ContributesAndroidInjectorGenerator implements ProcessingStep {
 
     private final Filer filer;
@@ -57,7 +67,7 @@ final class ContributesAndroidInjectorGenerator implements ProcessingStep {
 
     @Override
     public Set<? extends Class<? extends Annotation>> annotations() {
-        return ImmutableSet.of(ContributesObjectInjector.class);
+        return ImmutableSet.of(ContributesAndroidInjector.class);
     }
 
     @Override
@@ -109,12 +119,12 @@ final class ContributesAndroidInjectorGenerator implements ProcessingStep {
         return methodBuilder("bindAndroidInjectorFactory")
                 .addAnnotation(Binds.class)
                 .addAnnotation(IntoMap.class)
-                .addAnnotation(descriptor.mapObjectKeyAnnotation())
+                .addAnnotation(descriptor.mapKeyAnnotation())
                 .addModifiers(ABSTRACT)
                 .returns(
                         parameterizedTypeName(
                                 AndroidInjector.Factory.class,
-                                WildcardTypeName.subtypeOf(ClassName.get(InjectAble.class))))
+                                WildcardTypeName.subtypeOf(descriptor.frameworkType())))
                 .addParameter(subcomponentBuilderName, "builder")
                 .build();
     }
