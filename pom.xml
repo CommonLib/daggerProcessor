@@ -14,32 +14,8 @@
         <version>7</version>
     </parent>
 
-    <name>Dagger Android Processor</name>
+    <name>Dagger Object Processor</name>
     <packaging>jar</packaging>
-
-    <scm>
-        <url>http://github.com/google/dagger/</url>
-        <connection>scm:git:git://github.com/google/dagger.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/google/dagger.git</developerConnection>
-        <tag>HEAD</tag>
-    </scm>
-
-    <issueManagement>
-        <system>GitHub Issues</system>
-        <url>http://github.com/google/dagger/issues</url>
-    </issueManagement>
-
-    <licenses>
-        <license>
-            <name>Apache 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
-
-    <organization>
-        <name>Google, Inc.</name>
-        <url>http://www.google.com</url>
-    </organization>
 
     <dependencies>
         <dependency>
@@ -53,6 +29,7 @@
             <groupId>com.google.auto</groupId>
             <artifactId>auto-common</artifactId>
             <version>0.10</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/com.google.auto.value/auto-value -->
@@ -68,6 +45,7 @@
             <groupId>com.google.auto.service</groupId>
             <artifactId>auto-service</artifactId>
             <version>1.0-rc4</version>
+            <scope>provided</scope>
         </dependency>
 
 
@@ -85,22 +63,25 @@
             <groupId>com.google.googlejavaformat</groupId>
             <artifactId>google-java-format</artifactId>
             <version>1.4</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>21.0</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.squareup</groupId>
             <artifactId>javapoet</artifactId>
             <version>1.8.0</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
 
     <build>
-        <finalName>myweb</finalName>
+        <finalName>daggerObject</finalName>
         <plugins>
             <!--JDK版本 -->
             <plugin>
@@ -115,7 +96,7 @@
                 </configuration>
             </plugin>
 
-            <!--<plugin>
+            <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <descriptorRefs>
@@ -136,7 +117,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 

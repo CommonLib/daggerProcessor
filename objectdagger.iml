@@ -18,14 +18,14 @@
     <orderEntry type="library" name="dagger-android-processor-2.13-sources" level="project" />
     <orderEntry type="library" name="Maven: com.google.dagger:dagger:2.13" level="project" />
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
-    <orderEntry type="library" name="Maven: com.google.auto:auto-common:0.10" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.auto:auto-common:0.10" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.auto.value:auto-value:1.5.3" level="project" />
-    <orderEntry type="library" name="Maven: com.google.auto.service:auto-service:1.0-rc4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.auto.service:auto-service:1.0-rc4" level="project" />
     <orderEntry type="library" name="Maven: com.google.dagger:dagger-android-jarimpl:2.13" level="project" />
     <orderEntry type="library" name="Maven: com.google.dagger:dagger-android-support-jarimpl:2.13" level="project" />
-    <orderEntry type="library" name="Maven: com.google.googlejavaformat:google-java-format:1.4" level="project" />
-    <orderEntry type="library" name="Maven: com.google.errorprone:javac-shaded:9-dev-r4023-3" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava:21.0" level="project" />
-    <orderEntry type="library" name="Maven: com.squareup:javapoet:1.8.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.googlejavaformat:google-java-format:1.4" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.errorprone:javac-shaded:9-dev-r4023-3" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:21.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: com.squareup:javapoet:1.8.0" level="project" />
   </component>
 </module>
